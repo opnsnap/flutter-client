@@ -1,6 +1,7 @@
 import 'dart:io';
 import 'package:client/editor.dart';
 import 'package:flutter/material.dart';
+import 'package:image_editor_dove/flutter_image_editor.dart';
 import 'package:image_picker/image_picker.dart';
 
 class CameraScreen extends StatefulWidget {
@@ -35,6 +36,22 @@ class _CameraScreenState extends State<CameraScreen> {
         imageFile = File(pickedFile.path);
       });
     }
+  }
+
+  Future<void> toImageEditor(File origin) async {
+    return Navigator.push(context, MaterialPageRoute(builder: (context) {
+      return ImageEditor(
+          originImage: origin,
+      );
+    })).then((result) {
+      if (result is EditorImageResult) {
+        // setState(() {
+        //   _image = result.newFile;
+        // });
+      }
+    }).catchError((er) {
+      debugPrint(er);
+    });
   }
 
   @override
@@ -79,13 +96,24 @@ class _CameraScreenState extends State<CameraScreen> {
                 FloatingActionButton(
                     heroTag: "edit_button",
                     child: const Icon(Icons.edit),
-                    onPressed: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) =>
-                                EditorScreen(image: imageFile!),
-                          ));
+                    onPressed:  ()  {
+                      // var imageBytes = imageFile!.readAsBytesSync();
+                      // final editedImage = Navigator.push(
+                      //   context,
+                      //   MaterialPageRoute(
+                      //     builder: (context) => ImageEditor(
+                      //       image: imageBytes, // <-- Uint8List of image
+                      //     ),
+                      //   ),
+                      // );
+                      toImageEditor(imageFile!);
+
+                      // Navigator.push(
+                      //     context,
+                      //     MaterialPageRoute(
+                      //       builder: (context) =>
+                      //           EditorScreen(image: imageFile!),
+                      //     ));
                     }),
                 FloatingActionButton(
                   heroTag: "send_button",

@@ -29,11 +29,11 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  camera:
   path_provider:
   path:
-  flutter_camera:
   image_picker:
+  # image_editor_plus:
+  image_editor_dove:
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.

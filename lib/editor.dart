@@ -22,7 +22,8 @@ class _EditorScreenState extends State<EditorScreen> {
     return Scaffold(
       body: Container(
         alignment: Alignment.center,
-        child: Image.file(widget.image),
+        child: Image.file(widget.image)
+        ,
       ),
     );
   }

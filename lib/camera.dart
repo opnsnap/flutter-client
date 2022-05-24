@@ -1,8 +1,9 @@
 import 'dart:io';
 import 'package:client/editor.dart';
 import 'package:flutter/material.dart';
-import 'package:image_editor_dove/flutter_image_editor.dart';
+import 'package:image_editor_dove/flutter_image_editor.dart' as image_editor;
 import 'package:image_picker/image_picker.dart';
+import 'package:image_editor_plus/image_editor_plus.dart';
 
 class CameraScreen extends StatefulWidget {
   const CameraScreen({Key? key}) : super(key: key);
@@ -40,11 +41,11 @@ class _CameraScreenState extends State<CameraScreen> {
 
   Future<void> toImageEditor(File origin) async {
     return Navigator.push(context, MaterialPageRoute(builder: (context) {
-      return ImageEditor(
-          originImage: origin,
+      return image_editor.ImageEditor(
+        originImage: origin,
       );
     })).then((result) {
-      if (result is EditorImageResult) {
+      if (result is image_editor.EditorImageResult) {
         // setState(() {
         //   _image = result.newFile;
         // });
@@ -76,7 +77,7 @@ class _CameraScreenState extends State<CameraScreen> {
                       _getFromGallery();
                     }),
                 FloatingActionButton(
-                  heroTag: "camera_button",
+                    heroTag: "camera_button",
                     child: const Icon(Icons.camera),
                     onPressed: () {
                       _getFromCamera();
@@ -96,16 +97,7 @@ class _CameraScreenState extends State<CameraScreen> {
                 FloatingActionButton(
                     heroTag: "edit_button",
                     child: const Icon(Icons.edit),
-                    onPressed:  ()  {
-                      // var imageBytes = imageFile!.readAsBytesSync();
-                      // final editedImage = Navigator.push(
-                      //   context,
-                      //   MaterialPageRoute(
-                      //     builder: (context) => ImageEditor(
-                      //       image: imageBytes, // <-- Uint8List of image
-                      //     ),
-                      //   ),
-                      // );
+                    onPressed: () {
                       toImageEditor(imageFile!);
 
                       // Navigator.push(
@@ -116,7 +108,21 @@ class _CameraScreenState extends State<CameraScreen> {
                       //     ));
                     }),
                 FloatingActionButton(
-                  heroTag: "send_button",
+                    heroTag: "edit_button",
+                    child: const Icon(Icons.edit),
+                    onPressed: () {
+                      var imageBytes = imageFile!.readAsBytesSync();
+                      final editedImage = Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => ImageEditor(
+                            image: imageBytes, // <-- Uint8List of image
+                          ),
+                        ),
+                      );
+                    }),
+                FloatingActionButton(
+                    heroTag: "send_button",
                     child: const Icon(Icons.send),
                     onPressed: () {
                       // TODO: Send image

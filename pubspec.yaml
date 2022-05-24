@@ -32,7 +32,7 @@ dependencies:
   path_provider:
   path:
   image_picker:
-  # image_editor_plus:
+  image_editor_plus:
   image_editor_dove:
 
   # The following adds the Cupertino Icons font to your application.

@@ -1,3 +1,4 @@
+import 'package:client/about.dart';
 import 'package:client/camera.dart';
 import 'package:client/friends.dart';
 import 'package:flutter/material.dart';
@@ -14,14 +15,36 @@ class App extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'opnsnap',
-      initialRoute: '/',
       routes: {
-        '/': (context) => const CameraScreen(),
-        '/about': (context) => const FriendScreen(),
+        '/camera': (context) => const CameraScreen(),
+        '/about': (context) => const AboutScreen(),
         '/friends': (context) => const FriendScreen(),
       },
       theme: ThemeData(
         primarySwatch: Colors.deepPurple,
+      ),
+      home: const HomePage(),
+    );
+  }
+}
+
+class HomePage extends StatelessWidget {
+  const HomePage({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    final PageController controller = PageController();
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text("opnsnap"),
+      ),
+      body: PageView(
+        controller: controller,
+        children: const [
+          CameraScreen(),
+          FriendScreen(),
+          AboutScreen(),
+        ],
       ),
     );
   }

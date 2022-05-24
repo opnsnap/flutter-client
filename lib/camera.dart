@@ -1,4 +1,5 @@
 import 'dart:io';
+import 'package:client/editor.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 
@@ -52,11 +53,13 @@ class _CameraScreenState extends State<CameraScreen> {
           ? Wrap(
               children: [
                 FloatingActionButton(
+                    heroTag: "gallery_button",
                     child: const Icon(Icons.ad_units), // Or add_a_photo
                     onPressed: () {
                       _getFromGallery();
                     }),
                 FloatingActionButton(
+                  heroTag: "camera_button",
                     child: const Icon(Icons.camera),
                     onPressed: () {
                       _getFromCamera();
@@ -66,6 +69,7 @@ class _CameraScreenState extends State<CameraScreen> {
           : Wrap(
               children: [
                 FloatingActionButton(
+                    heroTag: "cancel_button",
                     child: const Icon(Icons.cancel),
                     onPressed: () {
                       setState(() {
@@ -73,11 +77,18 @@ class _CameraScreenState extends State<CameraScreen> {
                       });
                     }),
                 FloatingActionButton(
+                    heroTag: "edit_button",
                     child: const Icon(Icons.edit),
                     onPressed: () {
-                      // TODO: Go to edit screen
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) =>
+                                EditorScreen(image: imageFile!),
+                          ));
                     }),
                 FloatingActionButton(
+                  heroTag: "send_button",
                     child: const Icon(Icons.send),
                     onPressed: () {
                       // TODO: Send image

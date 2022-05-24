@@ -1,5 +1,6 @@
 import 'package:client/about.dart';
 import 'package:client/camera.dart';
+import 'package:client/editor.dart';
 import 'package:client/friends.dart';
 import 'package:flutter/material.dart';
 
@@ -33,7 +34,8 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final PageController controller = PageController();
+    final PageController controller = PageController(initialPage: 1 /* CameraScreen */);
+
     return Scaffold(
       appBar: AppBar(
         title: const Text("opnsnap"),
@@ -41,8 +43,8 @@ class HomePage extends StatelessWidget {
       body: PageView(
         controller: controller,
         children: const [
-          CameraScreen(),
           FriendScreen(),
+          CameraScreen(),
           AboutScreen(),
         ],
       ),

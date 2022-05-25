@@ -6,7 +6,9 @@ import 'package:image_editor_dove/widget/editor_panel_controller.dart';
 import 'package:image_picker/image_picker.dart';
 
 class CameraScreen extends StatefulWidget {
-  const CameraScreen({Key? key}) : super(key: key);
+  final Widget? to;
+
+  const CameraScreen({super.key, this.to});
 
   @override
   _CameraScreenState createState() => _CameraScreenState();
@@ -58,6 +60,25 @@ class _CameraScreenState extends State<CameraScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: widget.to == null
+            ? const Text('')
+            : Row(
+                children: [
+                  const Text('To '),
+                  widget.to!,
+                ],
+              ),
+        backgroundColor: Colors.transparent,
+        elevation: 0,
+        titleTextStyle: const TextStyle(
+          color: Colors.black,
+          fontSize: 20,
+        ),
+        iconTheme: const IconThemeData(
+          color: Colors.black,
+        ),
+      ),
       body: Container(
           alignment: Alignment.center,
           padding: const EdgeInsets.only(top: 10, bottom: 80),
@@ -72,13 +93,13 @@ class _CameraScreenState extends State<CameraScreen> {
               children: [
                 FloatingActionButton(
                     heroTag: "gallery_button",
-                    child: const Icon(Icons.ad_units), // Or add_a_photo
+                    child: const Icon(Icons.photo_library), // Or add_a_photo
                     onPressed: () {
                       _getFromGallery();
                     }),
                 FloatingActionButton(
                     heroTag: "camera_button",
-                    child: const Icon(Icons.camera),
+                    child: const Icon(Icons.camera_alt),
                     onPressed: () {
                       _getFromCamera();
                     })

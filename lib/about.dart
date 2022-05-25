@@ -13,6 +13,6 @@ class AboutScreen extends StatefulWidget {
 class _AboutScreenState extends State<AboutScreen> {
   @override
   Widget build(BuildContext context) {
-    return const Text("Friend Screen");
+    return const Text("About Screen");
   }
 }

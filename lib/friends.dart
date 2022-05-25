@@ -33,7 +33,7 @@ class _FriendScreenState extends State<FriendScreen> {
             Navigator.push(
               context,
               MaterialPageRoute(
-                builder: (context) => CameraScreen(),
+                builder: (context) => CameraScreen(to: item.buildTitle(context)),
               ),
             );
           },

@@ -24,7 +24,7 @@ class _AppState extends State<App> {
       routes: {
         '/camera': (context) => const CameraScreen(),
         '/about': (context) => const AboutScreen(),
-        '/friends': (context) => FriendScreen(items: []),
+        '/friends': (context) => FriendScreen(items: []),    // TODO: get friends correctly
       },
       theme: ThemeData(
         primarySwatch: Colors.deepPurple,

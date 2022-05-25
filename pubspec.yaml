@@ -32,9 +32,9 @@ dependencies:
   path_provider:
   path:
   image_picker:
-  image_editor:
+  image_editor_dove:
     git:
-      url: git://github.com/opnsnap/flutter_image_editor
+      url: https://github.com/opnsnap/flutter_image_editor
       ref: main
 
   # The following adds the Cupertino Icons font to your application.

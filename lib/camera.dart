@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:image_editor_dove/flutter_image_editor.dart' as image_editor;
 import 'package:image_editor_dove/widget/editor_panel_controller.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:image_editor_plus/image_editor_plus.dart';
 
 class CameraScreen extends StatefulWidget {
   const CameraScreen({Key? key}) : super(key: key);

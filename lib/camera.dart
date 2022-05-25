@@ -12,99 +12,6 @@ class CameraScreen extends StatefulWidget {
   _CameraScreenState createState() => _CameraScreenState();
 }
 
-class CustomImageEditor extends image_editor.ImageEditorDelegate {
-  @override
-  Widget addTextWidget(double limitSize, OperateType type,
-      {required bool choosen}) {
-    throw UnimplementedError();
-  }
-
-  @override
-  Widget backBtnWidget(double limitSize) {
-    // TODO: implement backBtnWidget
-    throw UnimplementedError();
-  }
-
-  @override
-  // TODO: implement boldTagWidget
-  Widget get boldTagWidget => throw UnimplementedError();
-
-  @override
-  // TODO: implement brushColors
-  List<Color> get brushColors => throw UnimplementedError();
-
-  @override
-  Widget brushWidget(double limitSize, OperateType type,
-      {required bool choosen}) {
-    // TODO: implement brushWidget
-    throw UnimplementedError();
-  }
-
-  @override
-  Widget doneWidget(BoxConstraints constraints) {
-    // TODO: implement doneWidget
-    throw UnimplementedError();
-  }
-
-  @override
-  Widget flipWidget(double limitSize, OperateType type,
-      {required bool choosen}) {
-    // TODO: implement flipWidget
-    throw UnimplementedError();
-  }
-
-  @override
-  Widget mosaicWidget(double limitSize, OperateType type,
-      {required bool choosen}) {
-    // TODO: implement mosaicWidget
-    throw UnimplementedError();
-  }
-
-  @override
-  // TODO: implement resetWidget
-  Widget get resetWidget => throw UnimplementedError();
-
-  @override
-  Widget rotateWidget(double limitSize, OperateType type,
-      {required bool choosen}) {
-    // TODO: implement rotateWidget
-    throw UnimplementedError();
-  }
-
-  @override
-  // TODO: implement sliderLeftWidget
-  Widget get sliderLeftWidget => throw UnimplementedError();
-
-  @override
-  // TODO: implement sliderRightWidget
-  Widget get sliderRightWidget => throw UnimplementedError();
-
-  @override
-  SliderThemeData sliderThemeData(BuildContext context) {
-    // TODO: implement sliderThemeData
-    throw UnimplementedError();
-  }
-
-  @override
-  // TODO: implement textColors
-  List<Color> get textColors => throw UnimplementedError();
-
-  @override
-  // TODO: implement textConfigModel
-  image_editor.TextConfigModel get textConfigModel =>
-      throw UnimplementedError();
-
-  @override
-  // TODO: implement textSelectedBorder
-  Border get textSelectedBorder => throw UnimplementedError();
-
-  @override
-  Widget undoWidget(double limitSize) {
-    // TODO: implement undoWidget
-    throw UnimplementedError();
-  }
-}
-
 class _CameraScreenState extends State<CameraScreen> {
   File? imageFile;
 
@@ -134,8 +41,6 @@ class _CameraScreenState extends State<CameraScreen> {
 
   Future<void> toImageEditor(File origin) async {
     return Navigator.push(context, MaterialPageRoute(builder: (context) {
-      image_editor.ImageEditor.uiDelegate = CustomImageEditor();
-
       return image_editor.ImageEditor(
         originImage: origin,
       );

@@ -8,9 +8,14 @@ void main() {
   runApp(const App());
 }
 
-class App extends StatelessWidget {
+class App extends StatefulWidget {
   const App({Key? key}) : super(key: key);
 
+  @override
+  State<App> createState() => _AppState();
+}
+
+class _AppState extends State<App> {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
@@ -19,12 +24,7 @@ class App extends StatelessWidget {
       routes: {
         '/camera': (context) => const CameraScreen(),
         '/about': (context) => const AboutScreen(),
-        '/friends': (context) => FriendScreen(items: List<ListItem>.generate(
-          1000,
-              (i) => i % 6 == 0
-              ? HeadingItem('Heading $i')
-              : MessageItem('Sender $i', 'Message body $i'),
-        ),),
+        '/friends': (context) => FriendScreen(items: []),
       },
       theme: ThemeData(
         primarySwatch: Colors.deepPurple,
@@ -34,12 +34,33 @@ class App extends StatelessWidget {
   }
 }
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
 
   @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  List<ListItem> friends = [];
+
+  @override
+  void initState() {
+    // TODO: Get friends from server
+    friends = [
+      MessageItem('Alice', 'Sent'),
+      MessageItem('Bob', 'Received'),
+      MessageItem('Charlie', 'Opened'),
+      MessageItem('David', 'Sent'),
+      MessageItem('Eve', 'Received'),
+      MessageItem('Fred', 'Sent'),
+    ];
+  }
+
+  @override
   Widget build(BuildContext context) {
-    final PageController controller = PageController(initialPage: 1 /* CameraScreen */);
+    final PageController controller =
+        PageController(initialPage: 1 /* CameraScreen */);
 
     return Scaffold(
       appBar: AppBar(
@@ -48,12 +69,7 @@ class HomePage extends StatelessWidget {
       body: PageView(
         controller: controller,
         children: [
-          FriendScreen(items: List<ListItem>.generate(
-            1000,
-                (i) => i % 6 == 0
-                ? HeadingItem('Heading $i')
-                : MessageItem('Sender $i', 'Message body $i'),
-          ),),
+          FriendScreen(items: friends),
           CameraScreen(),
           AboutScreen(),
         ],

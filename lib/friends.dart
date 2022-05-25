@@ -1,5 +1,6 @@
 // TODO: Friend list
 
+import 'package:client/camera.dart';
 import 'package:flutter/material.dart';
 
 class FriendScreen extends StatefulWidget {
@@ -22,9 +23,20 @@ class _FriendScreenState extends State<FriendScreen> {
       itemBuilder: (context, index) {
         final item = widget.items[index];
 
-        return ListTile(
-          title: item.buildTitle(context),
-          subtitle: item.buildSubtitle(context),
+        return GestureDetector(
+          child: ListTile(
+            title: item.buildTitle(context),
+            subtitle: widget.items[index].buildSubtitle(context),
+            leading: Icon(Icons.account_circle),
+          ),
+          onTap: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => CameraScreen(),
+              ),
+            );
+          },
         );
       },
     );
@@ -53,6 +65,7 @@ class MessageItem implements ListItem {
   @override
   Widget buildSubtitle(BuildContext context) => Text(body);
 }
+
 /// A ListItem that contains data to display a heading.
 class HeadingItem implements ListItem {
   final String heading;

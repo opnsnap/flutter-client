@@ -50,6 +50,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.16.0"
+  colorfilter_generator:
+    dependency: transitive
+    description:
+      name: colorfilter_generator
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.0.8"
   cross_file:
     dependency: transitive
     description:
@@ -146,8 +153,8 @@ packages:
     dependency: "direct main"
     description:
       path: "."
-      ref: main
-      resolved-ref: "2dfd6d1cb5820a5ee440a45df25207f250eab2df"
+      ref: fc74ed860c79a4f52aaba2bc09b484504ba48fe7
+      resolved-ref: fc74ed860c79a4f52aaba2bc09b484504ba48fe7
       url: "https://github.com/opnsnap/flutter_image_editor"
     source: git
     version: "0.0.2"
@@ -214,6 +221,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "0.1.4"
+  matrix2d:
+    dependency: transitive
+    description:
+      name: matrix2d
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "1.0.2"
   meta:
     dependency: transitive
     description:

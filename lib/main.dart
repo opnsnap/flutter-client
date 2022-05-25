@@ -19,7 +19,12 @@ class App extends StatelessWidget {
       routes: {
         '/camera': (context) => const CameraScreen(),
         '/about': (context) => const AboutScreen(),
-        '/friends': (context) => const FriendScreen(),
+        '/friends': (context) => FriendScreen(items: List<ListItem>.generate(
+          1000,
+              (i) => i % 6 == 0
+              ? HeadingItem('Heading $i')
+              : MessageItem('Sender $i', 'Message body $i'),
+        ),),
       },
       theme: ThemeData(
         primarySwatch: Colors.deepPurple,
@@ -42,8 +47,13 @@ class HomePage extends StatelessWidget {
       ),
       body: PageView(
         controller: controller,
-        children: const [
-          FriendScreen(),
+        children: [
+          FriendScreen(items: List<ListItem>.generate(
+            1000,
+                (i) => i % 6 == 0
+                ? HeadingItem('Heading $i')
+                : MessageItem('Sender $i', 'Message body $i'),
+          ),),
           CameraScreen(),
           AboutScreen(),
         ],

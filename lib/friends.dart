@@ -4,7 +4,7 @@ import 'package:client/camera.dart';
 import 'package:flutter/material.dart';
 
 class FriendScreen extends StatefulWidget {
-  final List<ListItem> items;
+  final List<MessageItem> items;
 
   const FriendScreen({super.key, required this.items});
 
@@ -33,7 +33,7 @@ class _FriendScreenState extends State<FriendScreen> {
             Navigator.push(
               context,
               MaterialPageRoute(
-                builder: (context) => CameraScreen(to: item.buildTitle(context)),
+                builder: (context) => CameraScreen(to: item),
               ),
             );
           },

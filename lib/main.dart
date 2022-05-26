@@ -42,7 +42,7 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  List<ListItem> friends = [];
+  List<MessageItem> friends = [];
 
   @override
   void initState() {

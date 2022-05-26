@@ -1,12 +1,17 @@
 import 'dart:io';
 import 'package:client/editor.dart';
+import 'package:client/friends.dart';
+import 'package:client/send.dart';
 import 'package:flutter/material.dart';
 import 'package:image_editor_dove/flutter_image_editor.dart' as image_editor;
 import 'package:image_editor_dove/widget/editor_panel_controller.dart';
 import 'package:image_picker/image_picker.dart';
 
+//server
+import 'package:http/http.dart' as http;
+
 class CameraScreen extends StatefulWidget {
-  final Widget? to;
+  final MessageItem? to;
 
   const CameraScreen({super.key, this.to});
 
@@ -48,13 +53,42 @@ class _CameraScreenState extends State<CameraScreen> {
       );
     })).then((result) {
       if (result is image_editor.EditorImageResult) {
-        // setState(() {
-        //   _image = result.newFile;
-        // });
+         setState(() {
+            imageFile = result.newFile;
+         });
       }
     }).catchError((er) {
       debugPrint(er);
     });
+  }
+
+  SnackBar snack(String msg){
+    return SnackBar(
+      content: Text(msg,
+        style: const TextStyle(fontSize: 20),
+        textAlign: TextAlign.center,
+      ),
+      backgroundColor: Theme.of(context).primaryColor,
+      width: 200,
+      padding: const EdgeInsets.symmetric(
+        vertical: 8.0, // Inner padding for SnackBar content.
+        horizontal: 8.0,
+      ),
+      behavior: SnackBarBehavior.floating,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(10.0),
+      ),
+    );
+  }
+
+  _sendImage() {
+    ScaffoldMessenger
+        .of(context)
+        .showSnackBar(snack("test"));
+
+    if(imageFile != null){
+      var url = Uri.parse('https://example.com/whatsit/create');
+    }
   }
 
   @override
@@ -66,7 +100,7 @@ class _CameraScreenState extends State<CameraScreen> {
             : Row(
                 children: [
                   const Text('To '),
-                  widget.to!,
+                  widget.to!.buildTitle(context),
                 ],
               ),
         backgroundColor: Colors.transparent,
@@ -126,6 +160,7 @@ class _CameraScreenState extends State<CameraScreen> {
                     child: const Icon(Icons.send),
                     onPressed: () {
                       // TODO: Send image
+                      _sendImage();
                     })
               ],
             ),

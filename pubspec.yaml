@@ -35,7 +35,7 @@ dependencies:
   image_editor_dove:
     git:
       url: https://github.com/opnsnap/flutter_image_editor
-      ref: dd6bc38d809a40a97fbf66b437ad7fe0149a7d15
+      ref: e7bb35d7eca49bde97a241a7d3c615f10cc45148
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.

@@ -1,11 +1,24 @@
-import 'package:client/about.dart';
-import 'package:client/camera.dart';
-import 'package:client/editor.dart';
-import 'package:client/friends.dart';
+import 'package:client/app.dart';
+import 'package:client/screens/about.dart';
+import 'package:client/bloc/auth_bloc.dart';
+import 'package:client/screens/camera.dart';
+import 'package:client/screens/friends.dart';
+import 'package:client/services/auth_service.dart';
+import 'package:client/storage.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 
-void main() {
-  runApp(const App());
+Future<void> main() async {
+  await dotenv.load(fileName: ".env");
+  final secureStorage = SecureStorage();
+  final authService = AuthService();
+
+  runApp(BlocProvider(
+    create: (context) =>
+        AuthBloc(secureStorage: secureStorage, authService: authService)
+          ..add(StartApp()),
+  ));
 }
 
 class App extends StatefulWidget {
@@ -24,12 +37,13 @@ class _AppState extends State<App> {
       routes: {
         '/camera': (context) => const CameraScreen(),
         '/about': (context) => const AboutScreen(),
-        '/friends': (context) => FriendScreen(items: []),    // TODO: get friends correctly
+        '/friends': (context) => FriendScreen(items: []),
+        // TODO: get friends correctly
       },
       theme: ThemeData(
         primarySwatch: Colors.deepPurple,
       ),
-      home: const HomePage(),
+      home: const AppWrapper(),
     );
   }
 }

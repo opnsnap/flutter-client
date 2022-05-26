@@ -1,5 +1,5 @@
 import 'dart:io';
-import 'package:client/editor.dart';
+import 'package:client/screens/editor.dart';
 import 'package:flutter/material.dart';
 import 'package:image_editor_dove/flutter_image_editor.dart' as image_editor;
 import 'package:image_editor_dove/widget/editor_panel_controller.dart';

@@ -1,6 +1,6 @@
 // TODO: Friend list
 
-import 'package:client/camera.dart';
+import 'package:client/screens/camera.dart';
 import 'package:flutter/material.dart';
 
 class FriendScreen extends StatefulWidget {

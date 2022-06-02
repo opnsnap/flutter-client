@@ -1,5 +1,3 @@
-// TODO: Friend list
-
 import 'package:client/camera.dart';
 import 'package:flutter/material.dart';
 

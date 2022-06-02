@@ -161,7 +161,6 @@ class _CameraScreenState extends State<CameraScreen> {
                     heroTag: "send_button",
                     child: const Icon(Icons.send),
                     onPressed: () {
-                      // TODO: Send image
                       _sendImage();
                     })
               ],

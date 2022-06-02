@@ -1,6 +1,7 @@
 import 'dart:io';
 import 'package:client/editor.dart';
 import 'package:client/friends.dart';
+import 'package:client/main.dart';
 import 'package:client/send.dart';
 import 'package:flutter/material.dart';
 import 'package:image_editor_dove/flutter_image_editor.dart' as image_editor;
@@ -84,7 +85,8 @@ class _CameraScreenState extends State<CameraScreen> {
   _sendImage() {
     ScaffoldMessenger
         .of(context)
-        .showSnackBar(snack("Sending"));
+        .showSnackBar(snack("Sent 🚀"));
+    Navigator.pop(context);
 
     if(imageFile != null){
       var url = Uri.parse('https://example.com/whatsit/create');

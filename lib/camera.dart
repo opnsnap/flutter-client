@@ -84,7 +84,7 @@ class _CameraScreenState extends State<CameraScreen> {
   _sendImage() {
     ScaffoldMessenger
         .of(context)
-        .showSnackBar(snack("test"));
+        .showSnackBar(snack("Sending"));
 
     if(imageFile != null){
       var url = Uri.parse('https://example.com/whatsit/create');

@@ -153,8 +153,8 @@ packages:
     dependency: "direct main"
     description:
       path: "."
-      ref: e7bb35d7eca49bde97a241a7d3c615f10cc45148
-      resolved-ref: e7bb35d7eca49bde97a241a7d3c615f10cc45148
+      ref: "851c5a44e18fdda7ec63b4fec0eaa82ef05a11a4"
+      resolved-ref: "851c5a44e18fdda7ec63b4fec0eaa82ef05a11a4"
       url: "https://github.com/opnsnap/flutter_image_editor"
     source: git
     version: "0.0.2"
